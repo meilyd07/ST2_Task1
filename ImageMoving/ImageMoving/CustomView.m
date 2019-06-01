@@ -14,12 +14,10 @@
 
 @implementation CustomView
 
-- (id)initWithId:(uint)number title:(NSString *)theTitle position:(CGPoint)point {
+- (id)initWithId:(uint)number title:(NSString *)theTitle {
     NSString *imageName = [[NSString alloc] initWithFormat:@"%d", number];
     self.originalImage = [UIImage imageNamed: imageName];
-    CGFloat imgWidth = self.originalImage.size.width;
-    CGFloat imgHeight = self.originalImage.size.height;
-    self = [super initWithFrame:CGRectMake(point.x, point.y, imgWidth, imgHeight)];
+    self = [super initWithFrame:CGRectZero];
     if (self) {
         [self setTitle:theTitle];
     }
@@ -27,12 +25,12 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    
-//    UIImage *_originalImage = [UIImage imageNamed: @"3"];
-//    [_originalImage drawInRect:CGRectMake(0.f, 0.f, _originalImage.size.width, _originalImage.size.height)];
-
     [self.originalImage drawInRect:CGRectMake(0.f, 0.f, self.originalImage.size.width, self.originalImage.size.height)];
 }
 
+- (CGSize)intrinsicContentSize
+{
+    return self.originalImage.size;
+}
 
 @end

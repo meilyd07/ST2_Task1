@@ -16,9 +16,6 @@
 @end
 
 @implementation SecondViewController
-{
-    uint _contentHeight;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,23 +54,31 @@
          @"https://loremflickr.com/cache/resized/4911_46959780851_58738a2083_320_240_nofilter.jpg",
          @"https://loremflickr.com/cache/resized/7871_46491920275_fcc6b968dd_n_320_240_nofilter.jpg",
          @"https://loremflickr.com/cache/resized/65535_32800932737_455186f6a0_320_240_nofilter.jpg"];
-    CGFloat _x = 10.f;
-    CGFloat _y = 10.f;
-    _contentHeight = 0;
-    for (int i=0; i<30; i++) {
-        CustomView *cv = [[CustomView alloc] initWithId:i title:_titleArray[i] position:CGPointMake(_x, _y)];
-        _y = _y + cv.bounds.size.height;
-        _contentHeight = _y;
+    
+    UIView *previousView = nil;
+    
+    for (int i = 0; i<30; i++) {
+        CustomView *cv = [[CustomView alloc] initWithId:i title:_titleArray[i]];
+        cv.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:cv];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:cv attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+
+        if (previousView == nil) {
+            [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:cv attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
+        } else {
+            [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:previousView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:cv attribute: NSLayoutAttributeTop multiplier:1 constant:0]];
+        }
+    
+        previousView = cv;
     }
-    _contentHeight = _contentHeight + 10;
+    if (previousView != nil) {
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:previousView attribute: NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute: NSLayoutAttributeBottom multiplier:1 constant: 0]];
+    }
 }
 
 - (void)addScrollConstraints {
-    self.view.translatesAutoresizingMaskIntoConstraints = NO;
     self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     self.contentView.translatesAutoresizingMaskIntoConstraints = NO;
-    
     
     NSLayoutConstraint *equalWidth = [NSLayoutConstraint constraintWithItem:self.contentView
                                                                   attribute:NSLayoutAttributeWidth
@@ -83,9 +88,6 @@
                                                                  multiplier:1.0f
                                                                    constant:0];
     [self.view addConstraint:equalWidth];
-    
-    NSLayoutConstraint *heightCont = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:_contentHeight];
-    [self.contentView addConstraint:heightCont];
     
     NSLayoutConstraint *pinScrollLeading = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0];
     NSLayoutConstraint *pinScrollTrailing = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0f constant:0.0];

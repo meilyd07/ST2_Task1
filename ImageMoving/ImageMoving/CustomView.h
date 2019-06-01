@@ -12,6 +12,6 @@
 @property (nonatomic, strong) NSString *title;
 //@property (nonatomic, assign) uint *number;
 
-- (id)initWithId:(uint)number title:(NSString *)theTitle position:(CGPoint)point;
+- (id)initWithId:(uint)number title:(NSString *)theTitle;
 @end
 

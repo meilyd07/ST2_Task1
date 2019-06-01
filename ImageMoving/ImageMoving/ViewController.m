@@ -23,12 +23,14 @@
     UIBarButtonItem *showAddButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pressAdd:)];
     
     self.navigationItem.rightBarButtonItem = showAddButton;
+    
+    self.view.backgroundColor = [UIColor yellowColor];
 }
 
 -(void)pressAdd:(id)sender
 {
     SecondViewController *vc = [[SecondViewController alloc]initWithNibName:@"SecondViewController" bundle:nil];
     
-    [self.navigationController pushViewController:vc animated:false];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end
