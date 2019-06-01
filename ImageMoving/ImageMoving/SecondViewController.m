@@ -7,6 +7,7 @@
 //
 
 #import "SecondViewController.h"
+#import "CustomView.h"
 
 @interface SecondViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -18,7 +19,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self populateContent];
     [self addScrollConstraints];
+}
+
+- (void)populateContent {
+    NSArray *_titleArray = @[@"https://loremflickr.com/cache/resized/65535_47770358311_ed044d81fa_n_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/4839_46926069422_7e7a760bee_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7913_47475906952_c6519538c6_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/65535_33788346308_2d66e52e15_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7922_47227182442_a266596c0f_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/4898_46679574984_765e6b52e0_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/65535_40811234203_48d1190ec4_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7447_9408095357_196a44413a_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/2720_4097907932_eb208f3042_n_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/65535_40924177063_5e80b3ccfd_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7927_40504445713_4bff07fc27_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7890_46965722211_d1bf37288f_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/65535_40729969893_482bfe8b05_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/1495_25243373896_00fa61f4eb_n_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7375_9043183128_4803f37b97_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7926_47499091882_0a1b1afb0f_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/65535_33744143688_3cac5ed48c_320_240_g.jpg",
+         @"https://loremflickr.com/cache/resized/7818_47530379011_6b2214d11a_320_240_g.jpg",
+         @"https://loremflickr.com/cache/resized/7879_46612728145_91f14bd25c_320_240_g.jpg",
+         @"https://loremflickr.com/cache/resized/65535_47939964192_bb556f6c90_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/201_442017130_5b94c644c9_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7879_32371004727_b45f061741_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/65535_47709833542_5efac91d69_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7844_47084062491_6dafeca912_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7902_46317421004_7ed71a8943_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/65535_47942418853_ba3c606912_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7826_47190013102_7bfa672bc4_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/4911_46959780851_58738a2083_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/7871_46491920275_fcc6b968dd_n_320_240_nofilter.jpg",
+         @"https://loremflickr.com/cache/resized/65535_32800932737_455186f6a0_320_240_nofilter.jpg"];
+    CGFloat _x = 10.f;
+    CGFloat _y = 10.f;
+    for (int i=0; i<30; i++) {
+        CustomView *cv = [[CustomView alloc] initWithId:i title:_titleArray[i] position:CGPointMake(_x, _y)];
+        _y = _y + cv.bounds.size.height;
+        [self.contentView addSubview:cv];
+    }
 }
 
 - (void)addScrollConstraints {
