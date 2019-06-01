@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UIViewController *viewController = [UIViewController new];
+    UIViewController *viewController = [SecondViewController new];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window setRootViewController:viewController];
     [self.window makeKeyAndVisible];
