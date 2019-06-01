@@ -16,6 +16,9 @@
 @end
 
 @implementation SecondViewController
+{
+    uint _contentHeight;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -56,11 +59,14 @@
          @"https://loremflickr.com/cache/resized/65535_32800932737_455186f6a0_320_240_nofilter.jpg"];
     CGFloat _x = 10.f;
     CGFloat _y = 10.f;
+    _contentHeight = 0;
     for (int i=0; i<30; i++) {
         CustomView *cv = [[CustomView alloc] initWithId:i title:_titleArray[i] position:CGPointMake(_x, _y)];
         _y = _y + cv.bounds.size.height;
+        _contentHeight = _y;
         [self.contentView addSubview:cv];
     }
+    _contentHeight = _contentHeight + 10;
 }
 
 - (void)addScrollConstraints {
@@ -78,7 +84,7 @@
                                                                    constant:0];
     [self.view addConstraint:equalWidth];
     
-    NSLayoutConstraint *heightCont = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:1812.0];
+    NSLayoutConstraint *heightCont = [NSLayoutConstraint constraintWithItem:self.contentView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:_contentHeight];
     [self.contentView addConstraint:heightCont];
     
     NSLayoutConstraint *pinScrollLeading = [NSLayoutConstraint constraintWithItem:self.scrollView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0f constant:0.0];
