@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "SecondViewController.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,9 +18,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UIViewController *viewController = [SecondViewController new];
+    UIViewController *viewController = [ViewController new];
     self.window.backgroundColor = [UIColor whiteColor];
-    [self.window setRootViewController:viewController];
+    //self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController: viewController];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController: viewController];
+    [self.window setRootViewController:nav];
     [self.window makeKeyAndVisible];
     return YES;
 }

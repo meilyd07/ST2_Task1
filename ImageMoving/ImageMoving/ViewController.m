@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SecondViewController.h"
 
 @interface ViewController ()
 
@@ -16,8 +17,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setTitle:@""];
+    
+    UIBarButtonItem *showAddButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pressAdd:)];
+    
+    self.navigationItem.rightBarButtonItem = showAddButton;
 }
 
-
+-(void)pressAdd:(id)sender
+{
+    SecondViewController *vc = [[SecondViewController alloc]initWithNibName:@"SecondViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:vc animated:false];
+}
 @end
