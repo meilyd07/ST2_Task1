@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setTitle:@"Select Item"];
-    
+    self.navigationItem.hidesBackButton = YES;
     UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(pressClose)];
     self.navigationItem.rightBarButtonItem = closeButton;
     
@@ -68,11 +68,7 @@
     
     for (int i = 0; i<30; i++) {
         CustomView *cv = [[CustomView alloc] initWithId:i title:_titleArray[i]];
-        
-        UITapGestureRecognizer *singleFingerTap =
-        [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                action:@selector(handleSingleTap:)];
-        [cv addGestureRecognizer:singleFingerTap];
+        [self addCustomViewGestureRecognizer:cv];
         
         cv.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:cv];
@@ -89,6 +85,13 @@
     if (previousView != nil) {
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:previousView attribute: NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute: NSLayoutAttributeBottom multiplier:1 constant: 0]];
     }
+}
+
+- (void)addCustomViewGestureRecognizer:(CustomView *)cv {
+    UITapGestureRecognizer *singleFingerTap =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(handleSingleTap:)];
+    [cv addGestureRecognizer:singleFingerTap];
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
@@ -128,15 +131,5 @@
     [self.scrollView addConstraint:pinContentTop];
     [self.scrollView addConstraint:pinContentBottom];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

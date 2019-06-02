@@ -19,7 +19,7 @@
     [self.navigationController popViewControllerAnimated:YES];
     [self.view addSubview:data];
     [self setCustomViewConstraints:data];
-    NSLog(@"%@", data.title);
+    [self setTitle:data.title];
 }
 
 - (void)setCustomViewConstraints:(CustomView*)data {
