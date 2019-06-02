@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ImageMoving/SecondViewController.m"
-            timestampString = "581168428.4573441"
+            timestampString = "581168834.3056509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-addScrollConstraints"
             landmarkType = "7">
          </BreakpointContent>

@@ -68,6 +68,12 @@
     
     for (int i = 0; i<30; i++) {
         CustomView *cv = [[CustomView alloc] initWithId:i title:_titleArray[i]];
+        
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(handleSingleTap:)];
+        [cv addGestureRecognizer:singleFingerTap];
+        
         cv.translatesAutoresizingMaskIntoConstraints = NO;
         [self.contentView addSubview:cv];
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:cv attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
@@ -83,6 +89,11 @@
     if (previousView != nil) {
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:previousView attribute: NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute: NSLayoutAttributeBottom multiplier:1 constant: 0]];
     }
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)addScrollConstraints {
