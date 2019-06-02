@@ -19,16 +19,13 @@
     [self.navigationController popViewControllerAnimated:YES];
     [self.view addSubview:data];
     [self setCustomViewConstraints:data];
-    //[self setTitle:data.title];
 }
 
 - (void)setCustomViewConstraints:(CustomView*)data {
-    [data setContentMode:UIViewContentModeScaleAspectFit];
-    [data addConstraint:[NSLayoutConstraint constraintWithItem:data attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:100]];
-    NSLayoutConstraint *centerCustomX = [NSLayoutConstraint constraintWithItem:data attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    NSLayoutConstraint *centerCustomY = [NSLayoutConstraint constraintWithItem:data attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
-    [self.view addConstraint:centerCustomX];
-    [self.view addConstraint:centerCustomY];
+    data.translatesAutoresizingMaskIntoConstraints = YES;
+    double pointx = self.view.frame.size.width / 2 - 50;
+    double pointy = self.view.frame.size.height / 2 - 50;
+    [data setFrame:CGRectMake(pointx, pointy, 100, 100)];
 }
 
 - (void)viewDidLoad {
