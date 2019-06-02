@@ -36,8 +36,6 @@
     UIBarButtonItem *showAddButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(pressAdd:)];
     
     self.navigationItem.rightBarButtonItem = showAddButton;
-    
-    self.view.backgroundColor = [UIColor yellowColor];
 }
 
 -(void)pressAdd:(id)sender
@@ -54,7 +52,7 @@
     //determine view selected
     UIView *view = [self.view hitTest:point withEvent:event];
     if (![view isEqual:self.view]) {
-        NSString *string = [(CustomView *)view title];
+        NSString *string = [(CustomView *)view Description];
         [self setTitle:string];
         self.movingView = view;
     } else {

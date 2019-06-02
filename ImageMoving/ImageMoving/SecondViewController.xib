@@ -29,13 +29,11 @@
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eas-61-ZoS" userLabel="Content View">
                             <rect key="frame" x="-50" y="-273" width="414" height="896"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <viewLayoutGuide key="safeArea" id="RQT-cS-WXg"/>
                         </view>
                     </subviews>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="2.8985507246376816" y="35.491071428571423"/>
         </view>

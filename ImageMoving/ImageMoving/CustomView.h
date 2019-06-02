@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomView : UIView
-@property (nonatomic, strong) NSString *title;
-//@property (nonatomic, assign) uint *number;
+@property (nonatomic, strong) NSString *Description;
 
 - (id)initWithId:(uint)number title:(NSString *)theTitle;
+- (void)hideLabel;
 @end
 

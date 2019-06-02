@@ -75,15 +75,15 @@
         [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:cv attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
 
         if (previousView == nil) {
-            [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:cv attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
+            [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:cv attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1 constant:-30]];
         } else {
-            [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:previousView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:cv attribute: NSLayoutAttributeTop multiplier:1 constant:0]];
+            [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:previousView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:cv attribute: NSLayoutAttributeTop multiplier:1 constant:-30]];
         }
     
         previousView = cv;
     }
     if (previousView != nil) {
-        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:previousView attribute: NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute: NSLayoutAttributeBottom multiplier:1 constant: 0]];
+        [self.contentView addConstraint:[NSLayoutConstraint constraintWithItem:previousView attribute: NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute: NSLayoutAttributeBottom multiplier:1 constant: -30]];
     }
 }
 
@@ -96,7 +96,9 @@
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
-    [_delegate secondVCDidDismisWithData:(CustomView *)recognizer.view];
+    CustomView *cv = (CustomView *)recognizer.view;
+    [cv hideLabel];
+    [_delegate secondVCDidDismisWithData:cv];
     
 }
 
