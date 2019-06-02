@@ -18,10 +18,10 @@
 - (void)secondVCDidDismisWithData:(CustomView*)data {
     [self.navigationController popViewControllerAnimated:YES];
     [self.view addSubview:data];
-    [self setCustomViewConstraints:data];
+    [self setCustomViewPosition:data];
 }
 
-- (void)setCustomViewConstraints:(CustomView*)data {
+- (void)setCustomViewPosition:(CustomView*)data {
     data.translatesAutoresizingMaskIntoConstraints = YES;
     double pointx = self.view.frame.size.width / 2 - 50;
     double pointy = self.view.frame.size.height / 2 - 50;
