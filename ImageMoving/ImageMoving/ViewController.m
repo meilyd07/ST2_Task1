@@ -17,7 +17,18 @@
 
 - (void)secondVCDidDismisWithData:(CustomView*)data {
     [self.navigationController popViewControllerAnimated:YES];
+    [self.view addSubview:data];
+    [self setCustomViewConstraints:data];
     NSLog(@"%@", data.title);
+}
+
+- (void)setCustomViewConstraints:(CustomView*)data {
+    [data setContentMode:UIViewContentModeScaleAspectFit];
+    [data addConstraint:[NSLayoutConstraint constraintWithItem:data attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:100]];
+    NSLayoutConstraint *centerCustomX = [NSLayoutConstraint constraintWithItem:data attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
+    NSLayoutConstraint *centerCustomY = [NSLayoutConstraint constraintWithItem:data attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
+    [self.view addConstraint:centerCustomX];
+    [self.view addConstraint:centerCustomY];
 }
 
 - (void)viewDidLoad {
