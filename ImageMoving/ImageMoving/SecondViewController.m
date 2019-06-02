@@ -93,7 +93,8 @@
 
 - (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [_delegate secondVCDidDismisWithData:(CustomView *)recognizer.view];
+    
 }
 
 - (void)addScrollConstraints {

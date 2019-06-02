@@ -32,6 +32,7 @@
 		6A5D8BAE22A1D204000C0925 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		6A7C86EA22A2E27000C6A666 /* CustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomView.h; sourceTree = "<group>"; };
 		6A7C86EB22A2E27000C6A666 /* CustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomView.m; sourceTree = "<group>"; };
+		6AFFCEB422A4226400806EA7 /* SecondVCDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondVCDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +73,7 @@
 				6A5D8BA122A1C424000C0925 /* Info.plist */,
 				6A5D8B9E22A1C424000C0925 /* LaunchScreen.storyboard */,
 				6A5D8BA222A1C424000C0925 /* main.m */,
+				6AFFCEB422A4226400806EA7 /* SecondVCDelegate.h */,
 				6A5D8BAD22A1D204000C0925 /* SecondViewController.h */,
 				6A5D8BAE22A1D204000C0925 /* SecondViewController.m */,
 				6A5D8BAB22A1D1A5000C0925 /* SecondViewController.xib */,

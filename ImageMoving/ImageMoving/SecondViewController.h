@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SecondVCDelegate.h"
 
 @interface SecondViewController : UIViewController
-
+@property (nonatomic, weak) id<SecondVCDelegate> delegate;
 @end

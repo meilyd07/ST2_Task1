@@ -15,6 +15,11 @@
 
 @implementation ViewController
 
+- (void)secondVCDidDismisWithData:(CustomView*)data {
+    [self.navigationController popViewControllerAnimated:YES];
+    NSLog(@"%@", data.title);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -30,7 +35,7 @@
 -(void)pressAdd:(id)sender
 {
     SecondViewController *vc = [[SecondViewController alloc]initWithNibName:@"SecondViewController" bundle:nil];
-    
+    vc.delegate = self;
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end
