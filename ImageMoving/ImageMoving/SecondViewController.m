@@ -19,8 +19,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setTitle:@"Select Item"];
+    
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(pressClose)];
+    self.navigationItem.rightBarButtonItem = closeButton;
+    
     [self populateContent];
     [self addScrollConstraints];
+}
+
+- (void)pressClose {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)populateContent {
