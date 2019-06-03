@@ -46,31 +46,13 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self bringSubviewToFront:self.superview];
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self.superview];
-    NSLog(@"touchesBegan %f %f", point.x, point.y);
+    [self.superview bringSubviewToFront:self];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self.superview];
     self.center = point;
-    NSLog(@"touchesMoved %f %f", point.x, point.y);
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self.superview];
-    
-    NSLog(@"touchesEnded %f %f", point.x, point.y);
-}
-
-- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self.superview];
-    
-    NSLog(@"touchesCancelled %f %f", point.x, point.y);
 }
 
 @end
