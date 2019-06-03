@@ -15,6 +15,11 @@
     [self.navigationController popViewControllerAnimated:YES];
     [self.view addSubview:data];
     [self setCustomViewPosition:data];
+    data.flowDelegate = self;
+}
+
+- (void)setTitleToNavigationController:(NSString*)Description {
+    [self setTitle:Description];
 }
 
 - (void)setCustomViewPosition:(CustomView*)data {
@@ -22,6 +27,10 @@
     double pointx = self.view.frame.size.width / 2 - 50;
     double pointy = self.view.frame.size.height / 2 - 50;
     [data setFrame:CGRectMake(pointx, pointy, 100, 100)];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self setTitle:@"ImageMoving"];
 }
 
 - (void)viewDidLoad {

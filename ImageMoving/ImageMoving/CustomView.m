@@ -21,15 +21,19 @@
     self = [super initWithFrame:CGRectZero];
     if (self) {
         [self setDescription:theTitle];
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, self.originalImage.size.height - 70.f, self.originalImage.size.width, 120)];
-        
-        self.titleLabel.text=theTitle;
-        [self.titleLabel setNumberOfLines:3];
-        [self.titleLabel sizeToFit];
-        [self addSubview:self.titleLabel];
+        [self addLabel:theTitle];
         self.multipleTouchEnabled = NO;
     }
     return self;
+}
+
+- (void)addLabel:(NSString *)theTitle {
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0f, self.originalImage.size.height - 70.f, self.originalImage.size.width, 120)];
+    
+    self.titleLabel.text = theTitle;
+    [self.titleLabel setNumberOfLines:3];
+    [self.titleLabel sizeToFit];
+    [self addSubview:self.titleLabel];
 }
 
 - (void)hideLabel {
@@ -47,6 +51,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.superview bringSubviewToFront:self];
+    [self.flowDelegate setTitleToNavigationController:self.Description];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

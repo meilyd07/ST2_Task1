@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SecondVCDelegate.h"
 
-@interface ViewController : UIViewController <SecondVCDelegate>
+@interface ViewController : UIViewController <SecondVCDelegate, OnTapProtocolDelegate>
 
 @end
 

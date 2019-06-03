@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OnTapProtocolDelegate.h"
 
 @interface CustomView : UIView
 @property (nonatomic, strong) NSString *Description;
+@property (nonatomic,weak) id<OnTapProtocolDelegate> flowDelegate;
 
 - (id)initWithId:(uint)number title:(NSString *)theTitle;
 - (void)hideLabel;
